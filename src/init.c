@@ -448,7 +448,7 @@ static int hyper_setup_shared(struct hyper_pod *pod)
 	if (is_xen)
 		ret = mount(pod->share_tag, SHARED_DIR, "9p", MS_NODEV, "trans=xen");
 	else
-		ret = mount(pod->share_tag, SHARED_DIR, "9p", MS_MGC_VAL| MS_NODEV, "trans=virtio");
+		ret = mount(pod->share_tag, SHARED_DIR, "9p", MS_MGC_VAL| MS_NODEV, "trans=virtio,cache=mmap");
 
 	if (ret < 0) {
 		perror("fail to mount shared dir");
